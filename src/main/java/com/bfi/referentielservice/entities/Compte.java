@@ -19,6 +19,7 @@ public class Compte implements Serializable {
     private String rib;
     private double soldeComptable;
     private double soldeDisponible;
+    private boolean cloture;
     //private Date dateCloture;
 
     @ManyToOne

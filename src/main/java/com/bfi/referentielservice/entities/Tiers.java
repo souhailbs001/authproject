@@ -17,13 +17,12 @@ import java.util.Date;
 public abstract class Tiers {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean ent;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private Date birthday;
-    private String libcou;
-    private String liblon;
+    private String nom;
+    private String Prenom;
+    private String sexe;
+    private Date dateDeNaissance;
+    private Date dateDeCreation;
+
     @OneToMany (mappedBy = "tiers")
     private Collection<Compte> comptes;
     @ManyToOne

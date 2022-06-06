@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
 public class Country implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

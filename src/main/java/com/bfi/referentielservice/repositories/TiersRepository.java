@@ -9,6 +9,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface TiersRepository extends JpaRepository<Tiers,Long> {
-    List<Tiers> findByFirstNameContains (String firstName);
+    List<Tiers> findByNomContains (String nom);
 
 }

@@ -18,6 +18,10 @@ public class PersonnePhysique extends Tiers implements Serializable {
     private String etatCivil;
     private String nomPere;
     private String nomMere;
-    private String lieuNaissance;
+    private String PaysNaissance;
+    private String paysNationalite;
+    private String paysResidence;
+    private Long mobile;
+
 
 }

@@ -9,8 +9,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource
-public interface PersonnePhysiqueRepository extends JpaRepository <Tiers,Long> {
-    List<PersonnePhysique> findByFirstNameContains(String firstName);
+public interface PersonnePhysiqueRepository extends JpaRepository <PersonnePhysique,Long> {
+    List<PersonnePhysique> findByNomContains(String nom);
     List<PersonnePhysique> findByNomPereContains(String nomPere);
 
 

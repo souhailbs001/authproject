@@ -19,15 +19,10 @@ public class Currency implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private Long decimal;
-    private String decimalName;
+    private String cc;
+    private String symbol;
     private String name;
-    private String translatedName;
-    private Long quotity;
-    private boolean certain;
-    private String internalName;
-    //@ManyToOne
-    //private Compte compte;
+
     @OneToMany(mappedBy = "currency")
     private Collection<Compte> comptes;
     @ManyToOne
