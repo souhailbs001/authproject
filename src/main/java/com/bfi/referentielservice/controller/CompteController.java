@@ -3,12 +3,14 @@ import com.bfi.referentielservice.entities.Compte;
 import com.bfi.referentielservice.repositories.CompteRepository;
 import com.bfi.referentielservice.services.CompteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api")
 public class CompteController {
     @Autowired
     CompteService compteService;
@@ -20,7 +22,9 @@ public class CompteController {
         return compteService.addCompte(compte);
     }
 
+    @CrossOrigin
     @GetMapping("/listCompte")
+    @PreAuthorize("hasRole('User')")
     public List<Compte> listComptes(){
         return compteService.listComptes();
     }
@@ -39,4 +43,8 @@ public class CompteController {
         return compteService.updateCompte(compte);
     }
 
+    @GetMapping ("/generateRib")
+    public String generateRib() {
+        return compteService.generateRib();
+    }
 }

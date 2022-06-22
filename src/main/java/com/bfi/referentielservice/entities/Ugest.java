@@ -25,8 +25,8 @@ public class Ugest implements Serializable {
     private Tiers tiers;
     @OneToMany(mappedBy = "ugest")
     private Collection<Compte> comptes;
-    @ManyToOne
-    private Ugest agenceParent;
+    //@ManyToOne
+    //private Ugest agenceParent;
 
 
 }

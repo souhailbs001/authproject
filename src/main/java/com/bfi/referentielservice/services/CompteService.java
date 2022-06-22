@@ -11,6 +11,7 @@ public interface CompteService {
     List<Compte> listComptes();
     void deleteCompte (Compte compte);
     Compte updateCompte (Compte compte );
+    String generateRib ();
     //void deleteCompteById
 
 

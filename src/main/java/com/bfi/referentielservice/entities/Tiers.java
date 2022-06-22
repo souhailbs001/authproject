@@ -22,7 +22,6 @@ public abstract class Tiers {
     private String sexe;
     private Date dateDeNaissance;
     private Date dateDeCreation;
-
     @OneToMany (mappedBy = "tiers")
     private Collection<Compte> comptes;
     @ManyToOne

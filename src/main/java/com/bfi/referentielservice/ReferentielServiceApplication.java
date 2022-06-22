@@ -3,18 +3,29 @@ import com.bfi.referentielservice.entities.*;
 import com.bfi.referentielservice.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 
 @SpringBootApplication
-@EnableGlobalMethodSecurity(prePostEnabled = true , securedEnabled = true)
+@EnableAutoConfiguration
+//@EntityScan("com.bfi.entities")
+//@ComponentScan({"com.bfi.services"})
+//@EnableJpaRepositories("com.bfi.repositories")
+//@ComponentScan({"com.bfi.security"})
 
 public class ReferentielServiceApplication {
 
@@ -68,5 +79,16 @@ public class ReferentielServiceApplication {
 	@Bean
 	PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public WebMvcConfigurer configure() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings (CorsRegistry registry) {
+				registry.addMapping("/*").allowedOrigins("http://localhost:4200");
+			}
+
+		};
 	}
 }

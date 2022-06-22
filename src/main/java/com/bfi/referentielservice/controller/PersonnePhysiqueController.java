@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class PersonnePhysiqueController   {
 
     @Autowired
@@ -19,10 +20,13 @@ public class PersonnePhysiqueController   {
     PersonnePhysiqueRepository personnePhysiqueRepository;
 
     @PostMapping(value = "/addClient")
+    @CrossOrigin(origins = "http://localhost:4200")
     PersonnePhysique addPersonnePhysique(@RequestBody PersonnePhysique pp){
         return personnePhysiqueService.addPersonnePhysique(pp);
     }
+
     @GetMapping(value = "/listClient")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<PersonnePhysique> listComptes() {
         return personnePhysiqueService.listPersonnePhysique();
     }

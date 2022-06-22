@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
-
 public class CompteServiceImpl implements CompteService {
 
     @Autowired
@@ -38,6 +38,19 @@ public class CompteServiceImpl implements CompteService {
     public Compte updateCompte(Compte compte) {
         return compteRepository.save(compte);
 
+    }
+
+    @Override
+    public String generateRib() {
+        Random rand = new Random();
+        String card = "BE";
+        for (int i = 0; i < 14; i++)
+        {
+            int n = rand.nextInt(10) + 0;
+            card += Integer.toString(n);
+        }
+        System.out.println(card);
+        return card;
     }
 
     //public void deleteCompteById(Long id) {

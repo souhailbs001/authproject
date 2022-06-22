@@ -22,6 +22,7 @@ public class PersonnePhysique extends Tiers implements Serializable {
     private String paysNationalite;
     private String paysResidence;
     private Long mobile;
+    private String mail;
 
 
 }
