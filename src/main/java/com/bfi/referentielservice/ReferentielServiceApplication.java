@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -21,7 +20,6 @@ import java.util.Date;
 
 
 @SpringBootApplication
-@EnableAutoConfiguration
 //@EntityScan("com.bfi.entities")
 //@ComponentScan({"com.bfi.services"})
 //@EnableJpaRepositories("com.bfi.repositories")
@@ -41,9 +39,7 @@ public class ReferentielServiceApplication {
 							CompteRepository compteRepository) {
 		return args -> {
 
-			Compte c1 = compteRepository.save(new Compte(null,"NUM_1123115","Compte epargne","1511321131615610",20000L,12000L,false,null,null,null,null));
-			Compte c2 = compteRepository.save(new Compte(null,"NUM_2111899","Compte epargne","1511321131615610",100000L,8800L,false,null,null,null,null));
-			Compte c3 = compteRepository.save(new Compte(null,"NUM_5615161","Compte cheque","1511321131615610",2000L,-2500L,false,null,null,null,null));
+
 
 
 			//PersonnePhysique pp1 = personnePhysiqueRepository.save(new PersonnePhysique(26,"célibataire","ali","raoudha", "Tunisie","tunisie","tunis",29677860L));
@@ -81,7 +77,7 @@ public class ReferentielServiceApplication {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
+	/*@Bean
 	public WebMvcConfigurer configure() {
 		return new WebMvcConfigurer() {
 			@Override
@@ -90,5 +86,5 @@ public class ReferentielServiceApplication {
 			}
 
 		};
-	}
+	}*/
 }

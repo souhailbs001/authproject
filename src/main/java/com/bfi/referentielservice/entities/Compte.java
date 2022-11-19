@@ -20,6 +20,7 @@ public class Compte implements Serializable {
     private double soldeComptable;
     private double soldeDisponible;
     private boolean cloture;
+    private Date dateCreation;
     //private Date dateCloture;
 
     @ManyToOne

@@ -11,8 +11,10 @@ import java.util.List;
 
 @Repository
 public interface PersonnePhysiqueRepository extends JpaRepository <PersonnePhysique,Long> {
+    PersonnePhysique findByNom(String nom);
     List<PersonnePhysique> findByNomContains(String nom);
     List<PersonnePhysique> findByNomPereContains(String nomPere);
+
 
 
 }

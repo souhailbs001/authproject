@@ -15,7 +15,6 @@ public class PersonnePhysiqueServiceImplementation implements PersonnePhysiqueSe
 
     @Override
     public PersonnePhysique addPersonnePhysique(PersonnePhysique pp) {
-
         return personnePhysiqueRepository.save(pp);
     }
 
