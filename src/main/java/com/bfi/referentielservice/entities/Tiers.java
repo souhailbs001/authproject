@@ -13,9 +13,9 @@ import java.util.Date;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="Tiers")
-@JsonDeserialize
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="Tiers")
+//@JsonDeserialize
 public abstract class Tiers {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,12 +24,12 @@ public abstract class Tiers {
     private String sexe;
     private Date dateDeNaissance;
     private Date dateDeCreation;
-    @OneToMany (mappedBy = "tiers")
-    private Collection<Compte> comptes;
+    /*@OneToMany (mappedBy = "pp")
+    private Collection<Compte> comptes;*/
     @ManyToOne
     private Country country;
-    @OneToMany(mappedBy ="tiers" )
-    private Collection<Ugest> ugests;
+    /*@OneToMany(mappedBy ="ugest" )
+    private Collection<Ugest> ugests;*/
     @OneToMany(mappedBy = "tiers")
     private Collection<Contact>contacts;
 

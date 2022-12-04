@@ -27,7 +27,7 @@ public class PersonnePhysiqueController   {
 
     @GetMapping(value = "/listClient")
     @CrossOrigin(origins = "http://localhost:4200")
-    public List<PersonnePhysique> listComptes() {
+    public List<PersonnePhysique> listClient() {
         return personnePhysiqueService.listPersonnePhysique();
     }
 

@@ -21,10 +21,11 @@ public class Ugest implements Serializable {
     private String codeInterne;
     private String libcou;
     private String liblon;
-    @ManyToOne
-    private Tiers tiers;
+    @OneToMany (mappedBy = "ugest")
+    private Collection<PersonnePhysique> personnePhysique;
     @OneToMany(mappedBy = "ugest")
     private Collection<Compte> comptes;
+
     //@ManyToOne
     //private Ugest agenceParent;
 

@@ -12,8 +12,8 @@ import java.util.Date;
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Compte implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    private String id;
     private String numCpt;
     private String description;
     private String rib;
@@ -21,16 +21,18 @@ public class Compte implements Serializable {
     private double soldeDisponible;
     private boolean cloture;
     private Date dateCreation;
+    private double initialBalance;
     //private Date dateCloture;
 
     @ManyToOne
     private Banque banque;
     @ManyToOne
-    private Tiers tiers;
+    private PersonnePhysique personnePhysique;
     @ManyToOne
     Currency currency;
-    //@OneToMany(mappedBy = "compte")
-    //private Collection<Currency> currencies;
     @ManyToOne
     private Ugest ugest;
+    //@OneToMany(mappedBy = "compte")
+    //private Collection<Currency> currencies;
+
 }

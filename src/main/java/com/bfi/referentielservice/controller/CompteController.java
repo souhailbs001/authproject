@@ -31,10 +31,8 @@ public class CompteController {
 
     @CrossOrigin
     @RequestMapping(value = "/saveCompte", method = RequestMethod.POST)
-    //public Compte saveCompte(@RequestBody String nom){
-        public Compte saveCompte(@RequestBody PersonnePhysique p){
-
-            return compteService.saveCompte(p);
+        public Compte saveAccount(@RequestBody Long personnePhysiqueId,@RequestBody double initialBalance){
+            return compteService.saveCompte(personnePhysiqueId,initialBalance);
     }
 
     @CrossOrigin
@@ -42,11 +40,12 @@ public class CompteController {
     public List<Compte> listComptes(){
         return compteService.listComptes();
     }
-    /*@GetMapping ("/getCompteClient/{id}")
+
+    @GetMapping ("/getCompteClient/{id}")
     public Compte getCompteClient(@PathVariable  Long id){
         return compteService.getCompte(id);
     }
-*/
+
     @DeleteMapping("/deleteCompte")
     public void deleteCompte(@PathVariable("id") Long id ){
     }

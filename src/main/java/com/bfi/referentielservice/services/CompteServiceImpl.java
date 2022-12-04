@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @Transactional
@@ -35,21 +32,20 @@ public class CompteServiceImpl implements CompteService {
     }
 
 
-    @Override
     //public Compte saveCompte( String nom) {
-
-        public Compte saveCompte( PersonnePhysique p) {
-
+    @Override
+    public Compte saveCompte( Long personnePhysiqueId, double initialBalance) {
 
        // PersonnePhysique client =personnePhysiqueRepository.findByNom(nom);
-        PersonnePhysique client =personnePhysiqueRepository.findById(p.getId()).get();
-        System.out.println(client);
+        PersonnePhysique client =personnePhysiqueRepository.findById(personnePhysiqueId).orElse(null);
+        if (client == null)
+            throw new RuntimeException("Client introuvable");
         Compte compte = new Compte();
+        compte.setId(UUID.randomUUID().toString());
         compte.setNumCpt(generateNumCpt());
         compte.setDateCreation(new Date());
-        compte.setTiers(client);
-        Compte savedAccount  = compteRepository.save(compte);
-        return savedAccount;
+        compte.setPersonnePhysique(client);
+        return compteRepository.save(compte);
     }
 
     @Override
