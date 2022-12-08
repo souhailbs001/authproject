@@ -13,9 +13,9 @@ import java.util.Date;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="Tiers")
-//@JsonDeserialize
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="Tiers")
+@JsonDeserialize
 public abstract class Tiers {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;

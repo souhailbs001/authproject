@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
@@ -20,8 +21,9 @@ public class Compte implements Serializable {
     private double soldeComptable;
     private double soldeDisponible;
     private boolean cloture;
-    private Date dateCreation;
+    private LocalDate dateCreation;
     private double initialBalance;
+    private String devise;
     //private Date dateCloture;
 
     @ManyToOne

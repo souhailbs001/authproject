@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class CompteController {
@@ -30,9 +30,9 @@ public class CompteController {
     }*/
 
     @CrossOrigin
-    @RequestMapping(value = "/saveCompte", method = RequestMethod.POST)
-        public Compte saveAccount(@RequestBody Long personnePhysiqueId,@RequestBody double initialBalance){
-            return compteService.saveCompte(personnePhysiqueId,initialBalance);
+    @RequestMapping(value = "/saveAccount", method = RequestMethod.POST)
+        public Compte saveAccount(@RequestBody Compte compte){
+            return compteService.saveCompte(compte);
     }
 
     @CrossOrigin
@@ -58,6 +58,18 @@ public class CompteController {
     @GetMapping ("/generateNumCpt")
     public String generateNumCpt() {
         return compteService.generateNumCpt();
+    }
+
+    /*@RequestMapping(value="/attacherCompteClient",method = RequestMethod.PUT)
+    public Compte attacherCompteClient(@RequestBody PersonnePhysique pp){
+        Compte compte1 = pp.getComptes();
+        return compteService.saveCompte();
+    }*/
+
+
+    @GetMapping("/comptes/search")
+    public List<Compte> searchComptes(@RequestParam(name = "keyword",defaultValue = "") String keyword){
+        return compteService.searchComptes("%"+keyword+"%");
     }
 
 }

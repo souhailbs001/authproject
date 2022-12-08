@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Year;
 import java.util.Collection;
 import java.util.Date;
 
@@ -15,17 +17,18 @@ import java.util.Date;
 //@DiscriminatorValue("PP")
 public class PersonnePhysique implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long personnePhysiqueid;
+    private Long id;
     private String nom;
-    private String Prenom;
+    private String prenom;
+    private String nomComplet;
     private String sexe;
-    private Date dateDeNaissance;
-    private Date dateDeCreation;
-    private int age;
+    private LocalDate dateDeNaissance;
+    private LocalDate dateDeCreation;
+    private Long age ;
     private String etatCivil;
     private String nomPere;
     private String nomMere;
-    private String PaysNaissance;
+    private String paysNaissance;
     private String paysNationalite;
     private String paysResidence;
     private Long mobile;
@@ -36,6 +39,7 @@ public class PersonnePhysique implements Serializable {
     private Country country;
     @ManyToOne
     private Ugest ugest;
+
     /*@OneToMany(mappedBy = "tiers")
     private Collection<Contact>contacts;*/
 

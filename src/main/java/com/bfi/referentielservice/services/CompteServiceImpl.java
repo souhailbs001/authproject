@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -34,17 +35,17 @@ public class CompteServiceImpl implements CompteService {
 
     //public Compte saveCompte( String nom) {
     @Override
-    public Compte saveCompte( Long personnePhysiqueId, double initialBalance) {
+    public Compte saveCompte( Compte compte) {
 
        // PersonnePhysique client =personnePhysiqueRepository.findByNom(nom);
-        PersonnePhysique client =personnePhysiqueRepository.findById(personnePhysiqueId).orElse(null);
-        if (client == null)
-            throw new RuntimeException("Client introuvable");
-        Compte compte = new Compte();
+        //PersonnePhysique client =personnePhysiqueRepository.findById(personnePhysiqueId).orElse(null);
+        //if (client == null)
+        //    throw new RuntimeException("Client introuvable");
         compte.setId(UUID.randomUUID().toString());
         compte.setNumCpt(generateNumCpt());
-        compte.setDateCreation(new Date());
-        compte.setPersonnePhysique(client);
+        compte.setDateCreation(LocalDate.now());
+        compte.setDevise("XAF");
+        //compte.setPersonnePhysique(client);
         return compteRepository.save(compte);
     }
 
@@ -76,6 +77,14 @@ public class CompteServiceImpl implements CompteService {
     @Override
     public Compte getCompte(Long id) {
         return compteRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Compte> searchComptes(String keyword) {
+        List<Compte> comptes=compteRepository.searchCompte(keyword);
+
+        return comptes;
+        // compteRepository.getByRib();
     }
 
     //public void deleteCompteById(Long id) {
