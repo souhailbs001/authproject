@@ -41,5 +41,10 @@ public class PersonnePhysiqueController   {
         return personnePhysiqueRepository.findByNomPereContains(nomPere);
     }
 
+    @RequestMapping(value="/findClient/{id}",method = RequestMethod.GET)
+    PersonnePhysique findClientById(@PathVariable(name="id") Long id){
+        return personnePhysiqueService.getClientById(id);
+    }
+
 
 }

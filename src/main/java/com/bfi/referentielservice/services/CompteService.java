@@ -8,12 +8,13 @@ import java.util.List;
 public interface CompteService {
     //Compte saveCompte(Long personnePhysiqueId,double initialBalance );
     Compte saveCompte(Compte compte);
+    void saveCompte2(Long idCustomer);
     List<Compte> listComptes();
     void deleteCompte (Compte compte);
     Compte updateCompte (Compte compte);
     String generateNumCpt ();
     Compte getCompte(Long id);
-    List<Compte> searchComptes(String keyword);
+    //List<Compte> searchComptes(String keyword);
 
 
     //void deleteCompteById

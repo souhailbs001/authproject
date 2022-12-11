@@ -36,6 +36,12 @@ public class CompteController {
     }
 
     @CrossOrigin
+    @RequestMapping(value = "/saveAccount2/{id}", method = RequestMethod.GET)
+    public void saveAccount(@PathVariable("id") Long idCustomer){
+        compteService.saveCompte2(idCustomer);
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/listCompte", method = RequestMethod.GET)
     public List<Compte> listComptes(){
         return compteService.listComptes();
@@ -51,7 +57,7 @@ public class CompteController {
     }
 
     @DeleteMapping("/deleteCompteById/{id}")
-    public void deleteCompteById(@PathVariable("id") Long id){
+    public void deleteCompteById(@PathVariable("id") String id){
         compteRepository.deleteById(id);
 
     }
@@ -67,9 +73,19 @@ public class CompteController {
     }*/
 
 
-    @GetMapping("/comptes/search")
+    /*@GetMapping("/listCompte/search")
     public List<Compte> searchComptes(@RequestParam(name = "keyword",defaultValue = "") String keyword){
         return compteService.searchComptes("%"+keyword+"%");
+    }*/
+
+    /*@GetMapping("/listCompte/search")
+    public List<Compte> searchComptes(@RequestParam(name = "keyword",defaultValue = "") String keyword){
+        return compteService.searchComptes("%"+keyword+"%");
+    }*/
+
+    @GetMapping("/listCompte/getCompte/{rib}")
+    public List<Compte> searchCompte(@PathVariable(name="rib") String rib ){
+        return compteRepository.findByRibContains(rib);
     }
 
 }

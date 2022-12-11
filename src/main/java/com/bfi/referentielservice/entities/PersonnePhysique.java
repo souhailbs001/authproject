@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data @AllArgsConstructor @NoArgsConstructor
 //@DiscriminatorValue("PP")
 public class PersonnePhysique implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)

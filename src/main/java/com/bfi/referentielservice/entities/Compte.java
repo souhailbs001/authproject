@@ -1,5 +1,6 @@
 package com.bfi.referentielservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,10 +30,13 @@ public class Compte implements Serializable {
     @ManyToOne
     private Banque banque;
     @ManyToOne
+    @JsonIgnore
     private PersonnePhysique personnePhysique;
     @ManyToOne
+    @JsonIgnore
     Currency currency;
     @ManyToOne
+    @JsonIgnore
     private Ugest ugest;
     //@OneToMany(mappedBy = "compte")
     //private Collection<Currency> currencies;

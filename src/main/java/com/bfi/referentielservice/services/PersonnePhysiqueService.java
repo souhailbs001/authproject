@@ -9,6 +9,7 @@ public interface PersonnePhysiqueService {
     public PersonnePhysique addPersonnePhysique(PersonnePhysique pp);
     public List<PersonnePhysique> listPersonnePhysique();
     public void deletePersonnePhysique(PersonnePhysique pp);
+    public PersonnePhysique getClientById (Long id);
 
 
 }

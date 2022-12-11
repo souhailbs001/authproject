@@ -42,5 +42,10 @@ public class PersonnePhysiqueServiceImplementation implements PersonnePhysiqueSe
 
     }
 
+     @Override
+     public PersonnePhysique getClientById(Long id) {
+         return personnePhysiqueRepository.getById(id);
+     }
 
-}
+
+ }

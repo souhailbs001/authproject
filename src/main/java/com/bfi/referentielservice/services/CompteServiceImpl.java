@@ -33,11 +33,9 @@ public class CompteServiceImpl implements CompteService {
     }
 
 
-    //public Compte saveCompte( String nom) {
     @Override
-    public Compte saveCompte( Compte compte) {
-
-       // PersonnePhysique client =personnePhysiqueRepository.findByNom(nom);
+    public Compte saveCompte(Compte compte) {
+        // PersonnePhysique client =personnePhysiqueRepository.findByNom(nom);
         //PersonnePhysique client =personnePhysiqueRepository.findById(personnePhysiqueId).orElse(null);
         //if (client == null)
         //    throw new RuntimeException("Client introuvable");
@@ -47,6 +45,21 @@ public class CompteServiceImpl implements CompteService {
         compte.setDevise("XAF");
         //compte.setPersonnePhysique(client);
         return compteRepository.save(compte);
+    }
+
+    //public Compte saveCompte( String nom) {
+    @Override
+    public void saveCompte2( Long customerId) {
+        System.out.println(customerId);
+        PersonnePhysique customer=personnePhysiqueRepository.findById(customerId).orElse(null);
+        System.out.println(customer);
+        Compte compte = new Compte();
+        compte.setPersonnePhysique(customer);
+        compte.setId(UUID.randomUUID().toString());
+        compte.setNumCpt(generateNumCpt());
+        compte.setDateCreation(LocalDate.now());
+        compte.setDevise("XAF");
+        compteRepository.save(compte);
     }
 
     @Override
@@ -76,16 +89,16 @@ public class CompteServiceImpl implements CompteService {
 
     @Override
     public Compte getCompte(Long id) {
-        return compteRepository.findById(id).orElse(null);
+        return null;
+        //return compteRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<Compte> searchComptes(String keyword) {
-        List<Compte> comptes=compteRepository.searchCompte(keyword);
+    //@Override
+    //public List<Compte> searchComptes(String keyword) {
+       // return compteRepository.searchCompte(keyword);
 
-        return comptes;
         // compteRepository.getByRib();
-    }
+    //}
 
     //public void deleteCompteById(Long id) {
     //    compteRepository.deleteCompteById(id);
